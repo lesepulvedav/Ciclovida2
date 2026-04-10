@@ -27,12 +27,13 @@
     "brace-expansion": "^1.1.13"
   },
   "overrides": {
-    "axios": "^1.7.9",
+    "axios": "$axios",
     "lodash": "^4.17.21",
     "path-to-regexp": "^0.1.13",
     "qs": "^6.14.1",
     "minimatch": "^3.1.5",
-    "brace-expansion": "^1.1.13"
+    "brace-expansion": "^1.1.13",
+    "picomatch": "^4.0.1"
   },
-  "_comment_vulnerabilidad_resuelta": "Se utiliza el bloque overrides para forzar versiones seguras en dependencias indirectas y pasar el npm audit."
+  "_comment_vulnerabilidad_resuelta": "Se añadió picomatch y se refinaron overrides para limpiar dependencias de desarrollo."
 }
