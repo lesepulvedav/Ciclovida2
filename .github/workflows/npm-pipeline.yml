@@ -19,4 +19,4 @@ jobs:
         run: npm audit
 
       - name: 🧪 Ejecutar Pruebas Automatizadas (Unidad/Integración)
-        run: npm test
+        run: npm tes
