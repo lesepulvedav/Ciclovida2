@@ -40,12 +40,19 @@ jobs:
       - name: ⬇️ Checkout del Código
         uses: actions/checkout@v4
 
+      - name: 🕵️ Debug de Secretos
+        run: |
+          if [ -z "${{ secrets.AWS_ACCESS_KEY_ID }}" ]; then echo "❌ Error: AWS_ACCESS_KEY_ID está vacío"; exit 1; fi
+          if [ -z "${{ secrets.AWS_SECRET_ACCESS_KEY }}" ]; then echo "❌ Error: AWS_SECRET_ACCESS_KEY está vacío"; exit 1; fi
+          if [ -z "${{ vars.AWS_REGION }}" ]; then echo "❌ Error: AWS_REGION está vacío"; exit 1; fi
+          echo "✅ GitHub encontró todas las variables y secretos."
+
       - name: 🔑 Configurar credenciales de AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }} # ⚠️ Agrega esta línea
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ vars.AWS_REGION }} # 3. Ajuste de Variables
 
       - name: 🐳 Login a Amazon ECR
